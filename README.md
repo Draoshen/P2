@@ -1,1 +1,2 @@
-# P2
+Esta es una práctica realizada por 
+@Miguel y @Rafael
