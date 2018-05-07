@@ -3,6 +3,21 @@ package gestionpedidos;
 import gestionpedidos.mapa.Mapa;
 import gestionpedidos.pedido.Pedido;
 import gestionpedidos.transportes.Transporte;
+//Este paquete hay que importarlo para que el compilador 
+//reconozca la anotación @Programacion2
+import anotacion.Programacion2; 
+
+//Rellenar siempre los datos del Autor 1
+//Para entrega en grupo rellenar los datos del Autor 2
+@Programacion2 (
+	nombreAutor1 = "Rafael Alejandro",
+	apellidoAutor1 = "Mellado Climent",
+	emailUPMAutor1 = "rafael.mellado.climent@alumnos.upm.es",
+	nombreAutor2 = "Miguel Ángel",
+	apellidoAutor2 = "Sánchez Magalotti", 
+	emailUPMAutor2 = "miguelangel.sanchez.magalotti@alumnos.upm.es"
+)
+
 
 public class GestionReparto {
 	// CÓDIGO DE APOYO
@@ -44,7 +59,7 @@ public class GestionReparto {
 		int coordenadaY = this.mapa.getMaxCoordY();
 		
 		
-		//Coordenadas del mapa asociado al transporte
+		//Coordenadas del transporte
 		
 		String codTransporte= transporte.getCodigo();
 		int coordenadaTransX = mapa.getPosicion(codTransporte).getX();

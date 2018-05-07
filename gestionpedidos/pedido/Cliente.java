@@ -1,5 +1,6 @@
 package gestionpedidos.pedido;
 
+
 public class Cliente {
 	private String codigo;
 		
