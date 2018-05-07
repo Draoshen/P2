@@ -45,10 +45,10 @@ public class GestionReparto {
 		
 		
 		//Coordenadas del mapa asociado al transporte
-		Mapa mapa1 =transporte.getMapa();
-		int coordenadaTransX = mapa1.getMaxCoordX();
-		int coordenadaTransy = mapa1.getMaxCoordY();
 		
+		String codTransporte= transporte.getCodigo();
+		int coordenadaTransX = mapa.getPosicion(codTransporte).getX();
+		int coordenadaTransY = mapa.getPosicion(codTransporte).getY();		
 		/*
 		 * Una vez obtenidas todas las coordenadas del mapa del transporte
 		 * proseguiremos a ver en cual de las cuatro zonas de Reparto está
@@ -59,7 +59,7 @@ public class GestionReparto {
 		
 		//Si se cumple el primer requisito el transporte está en la parte derecha
 		if((coordenadaX/2)<coordenadaTransX){
-			if((coordenadaY/2)<coordenadaTransy){
+			if((coordenadaY/2)<coordenadaTransY){
 				gestoresLocales[3].add(transporte);
 				}
 			else{
@@ -68,7 +68,7 @@ public class GestionReparto {
 			}
 		}
 		else{
-			if((coordenadaY/2)<coordenadaTransy){
+			if((coordenadaY/2)<coordenadaTransY){
 				gestoresLocales[2].add(transporte);
 				}
 			else{
@@ -76,6 +76,7 @@ public class GestionReparto {
 			}
 			
 		}
+		
 			
 		
 	}
@@ -120,6 +121,35 @@ public class GestionReparto {
 	
 	public void notificarEntregaPedido(Pedido pedido){
 		//TO-DO
+		String codCliente=pedido.getCliente().getCodigo();
+		int coordClienteX= mapa.getPosicion(codCliente).getX();
+		int coordClienteY = mapa.getPosicion(codCliente).getY();
+		
+		//Coordenadas del mapa
+		int coordenadaX = this.mapa.getMaxCoordX();
+		int coordenadaY = this.mapa.getMaxCoordY();
+		
+		//volvemos a repetir el proceso que hemos hecho en los transportes
+		if((coordenadaX/2)<coordClienteX){
+			if((coordenadaY/2)<coordClienteY){
+				gestoresLocales[3].notificarEntregaPedido(pedido);
+				}
+			else{
+				gestoresLocales[1].notificarEntregaPedido(pedido);
+				
+			}
+		}
+		else{
+			if((coordenadaY/2)<coordClienteY){
+				gestoresLocales[2].notificarEntregaPedido(pedido);
+				}
+			else{
+				gestoresLocales[0].notificarEntregaPedido(pedido);
+			}
+			
+		}
+		
+		
 	}
 	
 }
